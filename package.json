@@ -1,6 +1,6 @@
 {
   "name": "joya_kane",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
