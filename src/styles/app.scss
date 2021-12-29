@@ -22,10 +22,7 @@ h1.logo {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
-
-  &.start {
-    padding-top: 95px;
-  }
+  padding-top: 95px;
 }
 
 .bell {
@@ -60,7 +57,7 @@ h1.logo {
 
 .kleshas {
   cursor: pointer;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   user-select: none;
   background-repeat: no-repeat;
@@ -133,7 +130,7 @@ h1.logo {
   float: right;
   width: 120px;
   height: 72px;
-  margin-top: 20px;
+  margin-top: -75px;
   margin-right: 20px;
 
   .number {

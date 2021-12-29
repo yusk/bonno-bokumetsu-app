@@ -18,7 +18,7 @@ const getRandomPosition = () => {
   const topMax = kleshasField?.offsetHeight
   if (!leftMax || !topMax) return {}
   const left = Math.floor(Math.random() * (leftMax - 20 - kleshasWidth)) + 10
-  const top = Math.floor(Math.random() * (topMax - 20 - kleshasHeight - 100)) + 10 + 95
+  const top = Math.floor(Math.random() * (topMax - 20 - kleshasHeight - 100)) + 10
   return { left, top }
 }
 
