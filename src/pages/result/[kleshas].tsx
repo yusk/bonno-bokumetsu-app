@@ -14,7 +14,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!user.kleshasLogs.length) {
-      router.push({ pathname: '/' })
+      // router.push({ pathname: '/' })
     }
   }, [])
 
