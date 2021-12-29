@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-const MaxKleshasCount = 10
+const MaxKleshasCount = 108
 
 const KleshasData = [
   { id: 44949, name: '食欲', motto: 'ダイエットが成功する' },
