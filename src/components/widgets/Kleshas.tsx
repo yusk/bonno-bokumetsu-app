@@ -22,14 +22,13 @@ const getRandomPosition = () => {
 
 const Kleshas: React.FC<Props> = (props) => {
   if (typeof document === 'undefined') return <></>
-  const position = getRandomPosition()
-  const [left, setLeft] = useState(position.left)
-  const [top, setTop] = useState(position.top)
+  const [left, setLeft] = useState(0)
+  const [top, setTop] = useState(0)
   useEffect(() => {
     const position = getRandomPosition()
     if (!left || !top) {
-      setLeft(position.left)
-      setTop(position.top)
+      setLeft(position.left || 0)
+      setTop(position.top || 0)
     }
   }, [])
   const kleshas = utils.kleshasData.find((item) => item.id === props.kleshasId)
