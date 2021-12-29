@@ -37,9 +37,10 @@ const BokumetsuPage: React.FC<Props> = (props) => {
       user.kleshasLogs.push(kleshasId)
       const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
       const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
-      router.push({ pathname: `/result/${kleshas1?.name}撲滅` })
+      router.push({ pathname: `/result/${kleshas1?.id}` })
     }
   }
+
   return (
     <>
       <Head>
