@@ -2,7 +2,7 @@
 
 ## description
 
-team-appmakerによるjoya kaneのフロント
+team-appmakerによる煩悩撲滅アプリ
 
 ## env
 
