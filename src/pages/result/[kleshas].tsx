@@ -18,7 +18,7 @@ const ResultPage: React.FC<Props> = (props) => {
     }
   }, [])
 
-  const pageKleshas = utils.kleshasData.find((item) => item.id === Number(router.query.kleshas))
+  const pageKleshas = utils.KleshasData.find((item) => item.id === Number(router.query.kleshas))
   const pageUrl = `https://bonno-bokumetsu-app.volare.site`
 
   if (!user.kleshasLogs.length) {
@@ -32,9 +32,9 @@ const ResultPage: React.FC<Props> = (props) => {
   }
 
   const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
-  const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
-  const kleshas2 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id))
-  const kleshas3 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id))
+  const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
+  const kleshas2 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id))
+  const kleshas3 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id))
 
   const tweetMessage = `2021年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a🔔撲滅した欲ランキング🔔%0a%20%20%20-%201位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a%20%20%20-%202位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a%20%20%20-%203位%20${kleshas3?.name}%20${eradicatedKleshasRanking[2]?.count}個%0a%23除夜の鐘%20%23煩悩%20%23煩悩撲滅アプリ`
 
@@ -50,7 +50,7 @@ const ResultPage: React.FC<Props> = (props) => {
           <h2 className="kleshas-ranking-header">あなたの煩悩ランキング</h2>
           <div className="kleshas-ranking-body">
             {eradicatedKleshasRanking.map((kleshasItem, index) => {
-              const kleshas = utils.kleshasData.find((item) => item.id === Number(kleshasItem.id))
+              const kleshas = utils.KleshasData.find((item) => item.id === Number(kleshasItem.id))
               return (
                 <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
                   {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}

@@ -1,6 +1,8 @@
 import _ from 'lodash'
 
-const kleshasData = [
+const MaxKleshasCount = 108
+
+const KleshasData = [
   { id: 44949, name: '食欲', motto: 'ダイエットが成功する' },
   { id: 4249, name: '承認欲', motto: '思わぬツイートがバズる' },
   { id: 2249, name: '物欲', motto: '整理整頓がはかどる' },
@@ -22,7 +24,7 @@ const kleshasData = [
   { id: 949, name: '金欲', motto: '貯金がうまくいく' },
 ]
 
-const allKleshasCount = kleshasData.length
+const KleshasTypeCount = KleshasData.length
 
 const startAdjustOnResize = () => {
   window.addEventListener('resize', () => {
@@ -36,8 +38,9 @@ const makeEradicatedKleshasRanking = (kleshasLogs: number[]) => {
 }
 
 export default {
-  kleshasData,
+  MaxKleshasCount,
+  KleshasData,
+  KleshasTypeCount,
   startAdjustOnResize,
-  allKleshasCount,
   makeEradicatedKleshasRanking,
 }

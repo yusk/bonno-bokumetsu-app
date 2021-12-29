@@ -35,7 +35,7 @@ const Kleshas: React.FC<Props> = (props) => {
       setTop(position.top || 0)
     }
   }, [])
-  const kleshas = utils.kleshasData.find((item) => item.id === kleshasId)
+  const kleshas = utils.KleshasData.find((item) => item.id === kleshasId)
   if (!kleshas || !left || !top) return <></>
 
   const onClick = () => {

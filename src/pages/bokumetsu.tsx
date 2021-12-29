@@ -9,10 +9,8 @@ import utils from '~/utils'
 type Props = WithRouterProps & RootState & DispatchProps
 
 const getRandomKleshasId = () => {
-  return utils.kleshasData[Math.floor(Math.random() * utils.allKleshasCount)].id
+  return utils.KleshasData[Math.floor(Math.random() * utils.KleshasTypeCount)].id
 }
-
-const MaxKleshasCount = 108
 
 const BokumetsuPage: React.FC<Props> = (props) => {
   const [kleshasList, setKleshasList] = useState(
@@ -22,7 +20,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
   )
   const { actions, user, router } = props
   const eradicatedKleshasCount = user.kleshasLogs.length
-  const lastKleshasCount = MaxKleshasCount - eradicatedKleshasCount
+  const lastKleshasCount = utils.MaxKleshasCount - eradicatedKleshasCount
   const eradicateKleshas = (index: number, kleshasId: number) => {
     while (kleshasList[index] === kleshasId) {
       kleshasList[index] = getRandomKleshasId()
@@ -35,7 +33,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
     if (lastKleshasCount === 1) {
       user.kleshasLogs.push(kleshasId)
       const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
-      const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
+      const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
       router.push({ pathname: `/result/${kleshas1?.id}` })
     }
   }
