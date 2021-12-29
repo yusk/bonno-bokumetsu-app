@@ -1,41 +1,25 @@
 import { UserState, UserActions } from '../types'
 
 const initialState: UserState = {
-  isAuthed: false,
-  apiOptions: {
-    headers: {
-      Authorization: '',
-    },
-  },
+  kleshasLogs: [],
 }
 
-const user = (state = initialState, action: UserActions): UserState => {
+const User = (state = initialState, action: UserActions): UserState => {
   switch (action.type) {
-    case 'SET_USER':
-      localStorage.setItem('userToken', action.payload.token)
+    case 'ADD_KLESHAS_LOG':
+      const kleshasLogs = state.kleshasLogs.concat([action.payload.kleshasId])
       return {
         ...state,
-        isAuthed: true,
-        apiOptions: {
-          headers: {
-            Authorization: 'JWT ' + action.payload.token,
-          },
-        },
+        kleshasLogs,
       }
-    case 'CLEAR_USER':
-      localStorage.removeItem('userToken')
+    case 'CLEAR_KLESHAS_LOG':
       return {
         ...state,
-        isAuthed: false,
-        apiOptions: {
-          headers: {
-            Authorization: '',
-          },
-        },
+        kleshasLogs: [],
       }
     default:
       return state
   }
 }
 
-export default user
+export default User

@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
 import Link from 'next/link'
+import LogoImage from '~/assets/img/logo.svg'
 type Props = WithRouterProps & RootState & DispatchProps
 
 const IndexPage: React.FC<Props> = (props) => {
-  return <>
-    <h1>index page</h1>
-    <Link href="/bokumetsu">bokumetsu</Link>
-  </>
+  const { actions } = props
+  useEffect(() => {
+    actions.clearKleshasLog()
+  }, [])
+
+  return (
+    <div className="joya">
+      <h1 className="logo" style={{ backgroundImage: `url(${LogoImage})` }}>
+        BonnoBokumetsuApp
+      </h1>
+      <Link href="/bokumetsu">bokumetsu</Link>
+    </div>
+  )
 }
 
 export default enhancer(IndexPage)

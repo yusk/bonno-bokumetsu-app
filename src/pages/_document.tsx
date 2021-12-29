@@ -7,6 +7,7 @@ class MyDocument extends Document {
 
   render() {
     const description = '煩悩を消し去って新年を迎えよう！'
+
     return (
       <Html lang="ja-JP" dir="ltr">
         <Head>
@@ -26,10 +27,10 @@ class MyDocument extends Document {
           {/* safari */}
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
-          <meta name="apple-mobile-web-app-title" content="JoyaKane" />
+          <meta name="apple-mobile-web-app-title" content="煩悩撲滅アプリ" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
           {/* 一般 */}
-          <meta name="application-name" content="JoyaKane" />
+          <meta name="application-name" content="煩悩撲滅アプリ" />
           <meta name="theme-color" content="#000" />
           <meta name="description" content={description} />
           <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
@@ -37,10 +38,10 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           {/* ogp */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta property="og:url" content="https://jk.volare.site/" />
+          <meta property="og:url" content="https://bonno-bokumetsu-app.volare.site/" />
           <meta property="og:title" content="煩悩撲滅アプリ" />
           <meta property="og:description" content={description} />
-          <meta property="og:image" content="https://jk.volare.site/ogp.png" />
+          <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.png" />
         </Head>
         <body>
           <Main />
