@@ -19,7 +19,9 @@ const IndexPage: React.FC<Props> = (props) => {
         BonnoBokumetsuApp
       </h1>
       <img className="bell" src={TempleImage} />
-      <span className="button start-button"><Link href="/bokumetsu">開始</Link></span>
+      <span className="button start-button">
+        <Link href="/bokumetsu">開始</Link>
+      </span>
     </div>
   )
 }

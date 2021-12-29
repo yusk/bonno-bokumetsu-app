@@ -22,8 +22,15 @@ const ResultPage: React.FC<Props> = (props) => {
         })}
       </div>
 
-      <span className="button twitter-button"><a href="https://twitter.com/intent/tweet?text=aaaaa&url=image_url" target="blank"><i className="fab fa-twitter" />Twitterに投稿する</a></span>
-      <span className="button retry-button"><Link href="/">もう一度</Link></span>
+      <span className="button twitter-button">
+        <a href="https://twitter.com/intent/tweet?text=aaaaa&url=image_url" target="blank">
+          <i className="fab fa-twitter" />
+          Twitterに投稿する
+        </a>
+      </span>
+      <span className="button retry-button">
+        <Link href="/">もう一度</Link>
+      </span>
     </div>
   )
 }

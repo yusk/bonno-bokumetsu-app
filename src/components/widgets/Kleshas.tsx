@@ -12,13 +12,12 @@ type Props = {
 
 const getRandomPosition = () => {
   const kleshasField = document.getElementById('kleshasField')
-  console.log('kleshasField', kleshasField)
   const leftMax = kleshasField?.offsetWidth
   const topMax = kleshasField?.offsetHeight
   if (!leftMax || !topMax) return {}
   const left = Math.floor(Math.random() * (leftMax - 20 - kleshasWidth)) + 10
   const top = Math.floor(Math.random() * (topMax - 20 - kleshasHeight)) + 10
-  return {left, top}
+  return { left, top }
 }
 
 const Kleshas: React.FC<Props> = (props) => {
@@ -33,9 +32,13 @@ const Kleshas: React.FC<Props> = (props) => {
       setTop(position.top)
     }
   }, [])
-  const kleshas = utils.kleshasData.find(item => item.id === props.kleshasId)
+  const kleshas = utils.kleshasData.find((item) => item.id === props.kleshasId)
   if (!kleshas || !left || !top) return <></>
-  return <div className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={props.onClick}><span className="kleshas-text">{kleshas.name}</span></div>
+  return (
+    <div className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={props.onClick}>
+      <span className="kleshas-text">{kleshas.name}</span>
+    </div>
+  )
 }
 
 export default Kleshas

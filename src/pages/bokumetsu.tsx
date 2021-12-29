@@ -14,7 +14,11 @@ const getRandomKleshasId = () => {
 const MaxKleshasCount = 108
 
 const BokumetsuPage: React.FC<Props> = (props) => {
-  const [kleshasList, setKleshasList] = useState(Array(5).fill(0).map(id => getRandomKleshasId()))
+  const [kleshasList, setKleshasList] = useState(
+    Array(5)
+      .fill(0)
+      .map((id) => getRandomKleshasId())
+  )
   const { actions, user, router } = props
   const eradicatedKleshasCount = user.kleshasLogs.length
   const lastKleshasCount = MaxKleshasCount - eradicatedKleshasCount
@@ -35,10 +39,15 @@ const BokumetsuPage: React.FC<Props> = (props) => {
   return (
     <div className="joya">
       <img className="bell" src={TempleImage} />
-      <div className="kleshas-count"><span>あと</span><br /><span className="number">{lastKleshasCount}</span><span>回</span></div>
+      <div className="kleshas-count">
+        <span>あと</span>
+        <br />
+        <span className="number">{lastKleshasCount}</span>
+        <span>回</span>
+      </div>
       <div id="kleshasField">
         {kleshasList.map((kleshasId, index) => {
-          return <Kleshas key={index*(utils.allKleshasCount + 10) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
+          return <Kleshas key={index * (utils.allKleshasCount + 10) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
         })}
       </div>
     </div>
