@@ -54,7 +54,8 @@ const ResultPage: React.FC<Props> = (props) => {
               return (
                 <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
                   {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
-                  {kleshas?.name} {kleshasItem.count}<span className="count-suffix">個</span> {3 <= index && index !== eradicatedKleshasRanking.length - 1 ? '/' : ''}
+                  {kleshas?.name} {kleshasItem.count}
+                  <span className="count-suffix">個</span> {3 <= index && index !== eradicatedKleshasRanking.length - 1 ? '/' : ''}
                 </li>
               )
             })}
@@ -62,10 +63,7 @@ const ResultPage: React.FC<Props> = (props) => {
         </div>
 
         <span className="button twitter-button">
-          <a
-            href={`https://twitter.com/intent/tweet?text=${tweetMessage}&url=${pageUrl}/result/${router.query.kleshas}/`}
-            target="blank"
-          >
+          <a href={`https://twitter.com/intent/tweet?text=${tweetMessage}&url=${pageUrl}/result/${router.query.kleshas}/`} target="blank">
             <i className="fab fa-twitter" />
             Twitterに投稿する
           </a>

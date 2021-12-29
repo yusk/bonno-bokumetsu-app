@@ -56,7 +56,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         </div>
         <div id="kleshasField">
           {kleshasList.map((kleshasId, index) => {
-            const key = index * (50000) + kleshasId
+            const key = index * 50000 + kleshasId
             return <Kleshas key={key} kleshasKey={key} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
           })}
         </div>
