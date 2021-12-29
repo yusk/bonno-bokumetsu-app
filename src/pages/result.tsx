@@ -22,22 +22,22 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const eradicatedKleshasRanking = _.map(_.countBy(user.kleshasLogs), (kleshasCount, kleshasId) => ({id: kleshasId, count: kleshasCount})).sort((a, b) => b.count - a.count)
   const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
-  const kleshas2 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id))
-  const kleshas3 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id))
+  console.log('eradicatedKleshasRanking', eradicatedKleshasRanking)
   return (
     <div className="result">
-      <h1>result page</h1>
       <div className="kleshas-result">
         <div className="result-prefix">来年は</div>
         <div className="result-motto">{kleshas1?.motto}</div>
         <div className="result-suffix">年になるでしょう</div>
       </div>
       <div className="kleshas-ranking">
-        {eradicatedKleshasRanking.map((kleshasItem) => {
+        <h2>あなたの煩悩ランキング</h2>
+        {eradicatedKleshasRanking.map((kleshasItem, index) => {
           const kleshas = utils.kleshasData.find((item) => item.id === Number(kleshasItem.id))
           return (
-            <li key={kleshasItem.id}>
-              {kleshas?.name}: {kleshasItem.count}
+            <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
+              {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
+              {kleshas?.name} {kleshasItem.count}個 {(3 <= index && index !== eradicatedKleshasRanking.length - 1) ? '/' : ''}
             </li>
           )
         })}

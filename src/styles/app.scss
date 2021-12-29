@@ -46,6 +46,7 @@ h1.logo {
 }
 
 .result {
+  text-align: center;
   background-image: url('../assets/img/bg_result.jpg');
   background-position : center;
   background-repeat : no-repeat;
@@ -140,6 +141,51 @@ h1.logo {
   position: relative;
   height: calc(100vh - 90px);
 }
+
+.kleshas-result {
+  text-align: center;
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: 24px 18px;
+
+  border: solid 6px #E6AD28;
+  position: relative;
+
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: #FFF;
+  
+  &:after{
+    content: "";
+    border: solid 1px #E6AD28;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+  }
+
+  .result-prefix {
+    text-align: left;
+  }
+
+  .result-motto {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.5;
+  }
+
+  .result-suffix {
+    text-align: right;
+  }
+}
+
+.kleshas-ranking {
+  background-color: #FFF;
+}
+
 
 .twitter-button {
   :link, :visited {
