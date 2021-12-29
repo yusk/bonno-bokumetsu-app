@@ -14,7 +14,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!user.kleshasLogs.length) {
-      // router.push({ pathname: '/' })
+      router.push({ pathname: '/' })
     }
   }, [])
 
@@ -63,7 +63,7 @@ const ResultPage: React.FC<Props> = (props) => {
 
         <span className="button twitter-button">
           <a
-            href={`https://twitter.com/intent/tweet?text=${tweetMessage}&url=${pageUrl}/${router.query.kleshas}/`}
+            href={`https://twitter.com/intent/tweet?text=${tweetMessage}&url=${pageUrl}/result/${router.query.kleshas}/`}
             target="blank"
           >
             <i className="fab fa-twitter" />
