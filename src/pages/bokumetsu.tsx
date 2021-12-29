@@ -12,7 +12,7 @@ const getRandomKleshasId = () => {
   return utils.kleshasData[Math.floor(Math.random() * utils.allKleshasCount)].id
 }
 
-const MaxKleshasCount = 108
+const MaxKleshasCount = 10
 
 const BokumetsuPage: React.FC<Props> = (props) => {
   const [kleshasList, setKleshasList] = useState(
@@ -31,7 +31,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
     if (kleshasList.length >= lastKleshasCount) {
       kleshasList[index] = -1
     }
-    setKleshasList(kleshasList)
+    setKleshasList(kleshasList.concat())
 
     if (lastKleshasCount === 1) {
       user.kleshasLogs.push(kleshasId)

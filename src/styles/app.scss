@@ -22,6 +22,10 @@ h1.logo {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
+
+  &.start {
+    padding-top: 95px;
+  }
 }
 
 .bell {
