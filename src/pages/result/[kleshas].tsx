@@ -25,7 +25,7 @@ const ResultPage: React.FC<Props> = (props) => {
     return (
       <>
         <Head>
-          <title>煩悩撲滅アプリ</title>
+          <title>{`${pageKleshas?.name}撲滅`} - 煩悩撲滅アプリ</title>
           <meta property="og:image" content={`${pageUrl}/${pageKleshas?.name}撲滅.png`} />
         </Head>
       </>
@@ -41,6 +41,9 @@ const ResultPage: React.FC<Props> = (props) => {
 
   return (
     <>
+      <Head>
+        <title>{`${pageKleshas?.name}撲滅`} - 煩悩撲滅アプリ</title>
+      </Head>
       <div className="result">
         <div className="kleshas-result">
           <div className="result-prefix">来年は</div>
