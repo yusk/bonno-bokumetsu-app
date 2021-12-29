@@ -7,9 +7,9 @@ type Props = WithRouterProps & RootState & DispatchProps
 
 const ResultPage: React.FC<Props> = (props) => {
   return <>
-  <h1>result page</h1>
-  <Link href="/">index</Link>
-</>
+    <h1>result page</h1>
+    <Link href="/">index</Link>
+  </>
 }
 
 export default enhancer(ResultPage)
