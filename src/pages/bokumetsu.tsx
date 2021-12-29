@@ -9,10 +9,10 @@ import utils from '~/utils'
 type Props = WithRouterProps & RootState & DispatchProps
 
 const getRandomKleshasId = () => {
-  return Math.floor(Math.random() * utils.allKleshasCount)
+  return utils.kleshasData[Math.floor(Math.random() * utils.allKleshasCount)].id
 }
 
-const MaxKleshasCount = 108
+const MaxKleshasCount = 10
 
 const BokumetsuPage: React.FC<Props> = (props) => {
   const [kleshasList, setKleshasList] = useState(
@@ -56,7 +56,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         </div>
         <div id="kleshasField">
           {kleshasList.map((kleshasId, index) => {
-            return <Kleshas key={index * (utils.allKleshasCount + 10) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
+            return <Kleshas key={index * (50000) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
           })}
         </div>
       </div>
