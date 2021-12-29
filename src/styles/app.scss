@@ -22,7 +22,6 @@ h1.logo {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
-  padding-top: 95px;
 }
 
 .bell {
@@ -57,14 +56,16 @@ h1.logo {
 
 .kleshas {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   user-select: none;
   background-repeat: no-repeat;
   background-position: center;
-  font-size: 4.5rem;
+  background-size: 9rem;
   text-align: center;
+  line-height: 112px;
   width: 145px;
+  height: 112px;
   .kleshas-text {
     font-size: 1.3rem;
     font-weight: bold;
@@ -128,7 +129,7 @@ h1.logo {
   float: right;
   width: 120px;
   height: 72px;
-  margin-top: -75px;
+  margin-top: 20px;
   margin-right: 20px;
 
   .number {
@@ -198,7 +199,7 @@ h1.logo {
   width: 90%;
   margin: 0 auto;
   margin-top: 16px;
-  margin-bottom: calc(100vh - 560px);
+  margin-bottom: calc(50vh - 320px);
   background-color: #FFF;
 
   .kleshas-ranking-header {
