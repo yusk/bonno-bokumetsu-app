@@ -41,6 +41,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
   return (
     <>
       <Head>
+        <title>煩悩撲滅アプリ</title>
         <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
       </Head>
       <div className="joya">

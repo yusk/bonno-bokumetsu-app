@@ -25,6 +25,7 @@ const ResultPage: React.FC<Props> = (props) => {
     return (
       <>
         <Head>
+          <title>煩悩撲滅アプリ</title>
           <meta property="og:image" content={`${pageUrl}/${pageKleshas?.name}撲滅.png`} />
         </Head>
       </>
