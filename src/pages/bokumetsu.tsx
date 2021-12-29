@@ -11,7 +11,7 @@ const getRandomKleshasId = () => {
   return Math.floor(Math.random() * utils.allKleshasCount)
 }
 
-const MaxKleshasCount = 108
+const MaxKleshasCount = 10
 
 const BokumetsuPage: React.FC<Props> = (props) => {
   const [kleshasList, setKleshasList] = useState(
