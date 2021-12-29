@@ -18,7 +18,11 @@ const ResultPage: React.FC<Props> = (props) => {
     }
   }, [])
   if (!user.kleshasLogs.length) {
-    return <></>
+    return <>
+      <Head>
+        <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/名誉欲撲滅.png" />
+      </Head>
+    </>
   }
 
   const eradicatedKleshasRanking = _.map(_.countBy(user.kleshasLogs), (kleshasCount, kleshasId) => ({id: kleshasId, count: kleshasCount})).sort((a, b) => b.count - a.count)
@@ -26,9 +30,6 @@ const ResultPage: React.FC<Props> = (props) => {
   console.log('eradicatedKleshasRanking', eradicatedKleshasRanking)
   return (
     <>
-      <Head>
-        <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/名誉欲撲滅.png" />
-      </Head>
       <div className="result">
         <div className="kleshas-result">
           <div className="result-prefix">来年は</div>
