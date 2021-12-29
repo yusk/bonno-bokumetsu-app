@@ -9,33 +9,18 @@ body {
   > div {
     position: relative;
   }
+  @include bp-up(sm) {
+    background-color: #0b1f49;
+  }
 }
 
-.jk {
+.bouno-bokumetsu-app {
   min-height: 100vh;
   background-color: $sub-background-color;
-}
 
-header {
-  font-size: 14px;
-  color: $text-color;
-  background-color: $main-background-color;
-  text-align: center;
-  padding: 17px 0;
-  padding-left: $sidebar-width;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: $header-height;
-  z-index: 1000;
-  border-bottom: 1px solid $light-gray;
-
-  @include bp-down(lg) {
-    padding-left: $sidebar-md-width;
-  }
-  
-  @include bp-down {
-    padding-left: 0;
+  &.force-mobile {
+    max-width: $max-width;
+    margin: 0 auto !important;
   }
 }
 
