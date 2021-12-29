@@ -183,9 +183,81 @@ h1.logo {
 }
 
 .kleshas-ranking {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 16px;
+  margin-bottom: calc(100vh - 560px);
   background-color: #FFF;
-}
 
+  .kleshas-ranking-header {
+    color: #FFF;
+    background-color: #323232;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    padding: 0.5rem 0;
+  }
+
+  .kleshas-ranking-body {
+    text-align: left;
+    padding: 18px 10px;
+
+    li {
+      list-style: none;
+    }
+
+    .kleshas-rank {
+      font-weight: normal;
+      text-align: center;
+      display: inline-block;
+      color: #FFF;
+      font-size: 1.2rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 40px;
+      margin-right: 8px;
+      vertical-align: text-bottom;
+    }
+
+    .kleshas-1 {
+      display: inline-block;
+      width: 100%;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      .kleshas-rank {
+        background-color: #E6AD28;
+      }
+    }
+
+    .kleshas-2 {
+      display: inline-block;
+      width: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      .kleshas-rank {
+        background-color: #9C7C4B;
+      }
+    }
+
+    .kleshas-3 {
+      display: inline-block;
+      width: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      .kleshas-rank {
+        background-color: #C4C4C4;
+      }
+    }
+    
+    .kleshas-other {
+      font-size: 0.8rem;
+      display: inline-block;
+      color: #656565;
+    }
+  }
+}
 
 .twitter-button {
   :link, :visited {

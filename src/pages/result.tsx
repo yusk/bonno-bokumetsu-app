@@ -31,16 +31,18 @@ const ResultPage: React.FC<Props> = (props) => {
         <div className="result-suffix">年になるでしょう</div>
       </div>
       <div className="kleshas-ranking">
-        <h2>あなたの煩悩ランキング</h2>
-        {eradicatedKleshasRanking.map((kleshasItem, index) => {
-          const kleshas = utils.kleshasData.find((item) => item.id === Number(kleshasItem.id))
-          return (
-            <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
-              {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
-              {kleshas?.name} {kleshasItem.count}個 {(3 <= index && index !== eradicatedKleshasRanking.length - 1) ? '/' : ''}
-            </li>
-          )
-        })}
+        <h2 className="kleshas-ranking-header">あなたの煩悩ランキング</h2>
+        <div className="kleshas-ranking-body">
+          {eradicatedKleshasRanking.map((kleshasItem, index) => {
+            const kleshas = utils.kleshasData.find((item) => item.id === Number(kleshasItem.id))
+            return (
+              <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
+                {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
+                {kleshas?.name} {kleshasItem.count}個 {(3 <= index && index !== eradicatedKleshasRanking.length - 1) ? '/' : ''}
+              </li>
+            )
+          })}
+        </div>
       </div>
 
       <span className="button twitter-button">
