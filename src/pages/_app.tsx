@@ -1,7 +1,6 @@
 import React from 'react'
 import App, { AppContext } from 'next/app'
 import { Provider, ReactReduxContext } from 'react-redux'
-import Head from 'next/head'
 import '../styles/index.scss'
 import wrapper from '~/redux/store'
 import enhancer from '~/redux/enhancer'

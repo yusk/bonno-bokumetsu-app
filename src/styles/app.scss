@@ -6,13 +6,87 @@ h1.logo {
 }
 
 .joya {
-  background-position: center;
-  background-image   : url("../assets/img/bg_joya.jpg");
-  background-repeat  : no-repeat;
+  background-position : center;
+  background-repeat : no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
 }
 
 .result {
+  background-position : center;
+  background-repeat : no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+.kleshas {
+  user-select: none;
+  background-repeat: no-repeat;
   background-position: center;
-  background-image   : url("../assets/img/bg_result.jpg");
-  background-repeat  : no-repeat;
+  font-size: 3.6rem;
+  text-align: center;
+  .kleshas-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    vertical-align: super;
+  }
+}
+
+.button {
+  display: block;
+  text-align: center;
+
+  :link, :visited {
+    display: inline-block;
+    width: 95%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    border-radius: 40px;
+    text-align: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.start-button {
+  :link, :visited {
+    color: #FFF;
+    background-color: #E6AD28;
+
+    &:hover {
+      color: #FFF;
+      background-color: #E6AD28;
+    }
+  }
+}
+
+.twitter-button {
+  :link, :visited {
+    color: #FFF;
+    background-color: #00ACEE;
+
+    &:hover {
+      color: #FFF;
+      background-color: #00ACEE;
+    }
+  }
+}
+
+.retry-button {
+  :link, :visited {
+    color: #FFF;
+    background-color: #B8AC9A;
+
+    &:hover {
+      color: #FFF;
+      background-color: #B8AC9A;
+    }
+  }
 }

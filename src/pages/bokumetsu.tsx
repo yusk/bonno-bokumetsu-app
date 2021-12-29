@@ -3,6 +3,7 @@ import { WithRouterProps } from 'next/dist/client/with-router'
 import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
 import Link from 'next/link'
+import Kleshas from '@/widgets/Kleshas'
 type Props = WithRouterProps & RootState & DispatchProps
 
 const MaxKleshasCount = 108
@@ -17,8 +18,8 @@ const BokumetsuPage: React.FC<Props> = (props) => {
       <h1>bokumetsu page</h1>
       <div className="kleshas-count">{MaxKleshasCount - user.kleshasLogs.length}</div>
       <div className="kleshas-field">
-        <div onClick={() => eradicateKleshas(1)}>1煩悩</div>
-        <div onClick={() => eradicateKleshas(3)}>3煩悩</div>
+        <Kleshas kleshasId={1} onClick={() => eradicateKleshas(1)} />
+        <Kleshas kleshasId={3} onClick={() => eradicateKleshas(3)} />
       </div>
       <Link href="/result">result</Link>
     </div>

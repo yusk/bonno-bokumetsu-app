@@ -18,6 +18,9 @@ class MyDocument extends Document {
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossOrigin="anonymous"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap" rel="stylesheet" />
           {/* windows */}
           <meta name="msapplication-square70x70logo" content="/site-tile-70x70.png" />
           <meta name="msapplication-square150x150logo" content="/site-tile-150x150.png" />
