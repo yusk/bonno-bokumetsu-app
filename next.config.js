@@ -10,7 +10,7 @@ module.exports = withPWA(withCSS(withSass({
       use: {
         loader: 'url-loader',
         options: {
-          limit: 100000,
+          limit: 300000,
           name: '[name].[ext]',
           esModule: false,
         }
