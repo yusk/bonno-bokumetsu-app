@@ -260,6 +260,9 @@ h1.logo {
         font-size: 1rem;
         font-weight: normal;
       }
+      @include bp-down(xs) {
+        font-size: 1.1rem;
+      }
     }
 
     .kleshas-3 {
@@ -274,6 +277,9 @@ h1.logo {
       .count-suffix {
         font-size: 1rem;
         font-weight: normal;
+      }
+      @include bp-down(xs) {
+        font-size: 1.1rem;
       }
     }
     
