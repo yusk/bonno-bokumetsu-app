@@ -1,0 +1,61 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.64);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.Modal {
+  background: $sub-background-color;
+  width: 480px;
+  height: 200px;
+  border-radius: 4px;
+  outline: transparent;
+  @include bp-down {
+    width: 90%;
+  }
+
+  &.confrim-modal {
+    height: 140px;
+  }
+  
+  .modal-contents{
+    position: relative;
+    font-size: 0.8rem;
+    height: 100%;
+    padding: 28px;
+    word-break: break-word;
+
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    input {
+      font-size: 16px;
+    }
+
+    &-buttons {
+      margin-top: 1.2rem;
+      bottom: 1rem;
+      right: 1rem;
+      position: absolute;
+
+      button {
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+
+        &.btn-danger {
+          color: #FFF;
+        }
+      }
+    }
+  }
+}

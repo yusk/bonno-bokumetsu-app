@@ -1,0 +1,27 @@
+.sign-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .sign {
+    width: 300px;
+    margin: 0 auto;
+  
+    h1.logo {
+      color: rgba(0,0,0,0);
+      user-select: none;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    .policy-confirm {
+      vertical-align: top;
+      margin-right: -10px;
+      display: inline-block;
+    }
+  }
+}

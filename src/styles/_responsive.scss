@@ -1,0 +1,23 @@
+$breakpoints-up: (
+  'sm': 'screen and (min-width: 576px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 992px)',
+) !default;
+
+@mixin bp-up($breakpoint: md) {
+  @media #{map-get($breakpoints-up, $breakpoint)} {
+    @content;
+  }
+}
+
+$breakpoints-down: (
+  'sm': 'screen and (max-width: 575.98px)',
+  'md': 'screen and (max-width: 767.98px)',
+  'lg': 'screen and (max-width: 991.98px)',
+) !default;
+
+@mixin bp-down($breakpoint: md) {
+  @media #{map-get($breakpoints-down, $breakpoint)} {
+    @content;
+  }
+}
