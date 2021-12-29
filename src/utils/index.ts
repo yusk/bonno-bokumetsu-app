@@ -8,7 +8,7 @@ const kleshasData = [
   { id: 4, name: '色欲', motto: '理想の相手が見つかる' },
   { id: 5, name: '我欲', motto: 'チームワークを発揮する' },
   { id: 6, name: '獣欲', motto: '理性的に行動する' },
-  { id: 7, name: '声欲', motto: '新しいアーティストにハマる' },
+  { id: 7, name: '声欲', motto: '新しい音楽にハマる' },
   { id: 8, name: '利欲', motto: 'ボランティアをすると良い' },
   { id: 9, name: '睡眠欲', motto: '早寝早起きができる' },
   { id: 10, name: '出世欲', motto: '頑張りが評価される' },
