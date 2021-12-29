@@ -180,6 +180,13 @@ h1.logo {
   .result-suffix {
     text-align: right;
   }
+
+  @include bp-down(xs) {
+    font-size: 1rem;
+    .result-motto {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .kleshas-ranking {

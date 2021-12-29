@@ -11,6 +11,7 @@ $breakpoints-up: (
 }
 
 $breakpoints-down: (
+  'xs': 'screen and (max-width: 424.98px)',
   'sm': 'screen and (max-width: 575.98px)',
   'md': 'screen and (max-width: 767.98px)',
   'lg': 'screen and (max-width: 991.98px)',
