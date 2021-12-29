@@ -5,11 +5,11 @@ import enhancer from '~/redux/enhancer'
 import Link from 'next/link'
 type Props = WithRouterProps & RootState & DispatchProps
 
-const IndexPage: React.FC<Props> = (props) => {
+const ResultPage: React.FC<Props> = (props) => {
   return <>
-    <h1>index page</h1>
-    <Link href="/bokumetsu">bokumetsu</Link>
-  </>
+  <h1>result page</h1>
+  <Link href="/">index</Link>
+</>
 }
 
-export default enhancer(IndexPage)
+export default enhancer(ResultPage)
