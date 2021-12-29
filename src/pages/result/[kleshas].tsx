@@ -36,7 +36,7 @@ const ResultPage: React.FC<Props> = (props) => {
   const kleshas2 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id))
   const kleshas3 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id))
 
-  const tweetMessage = `2021年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a撲滅した欲ランキング%0a%0a1位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a2位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a3位%20${kleshas3?.name}%20${eradicatedKleshasRanking[2]?.count}個%0a%23除夜の鐘%23煩悩%20%23煩悩撲滅アプリ`
+  const tweetMessage = `2021年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a%0a🔔撲滅した欲ランキング🔔%0a%0a1位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a2位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a3位%20${kleshas3?.name}%20${eradicatedKleshasRanking[2]?.count}個%0a%23除夜の鐘%20%23煩悩%20%23煩悩撲滅アプリ`
 
   return (
     <>
