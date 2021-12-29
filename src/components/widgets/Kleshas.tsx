@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import BubbleImage from '~/assets/img/bubble.svg'
 import utils from '~/utils'
 
+const animationMs = 200
 const kleshasWidth = 145
 const kleshasHeight = 108
 
 type Props = {
   kleshasId: number
+  kleshasKey: number
   onClick: () => void
 }
 
@@ -22,6 +24,7 @@ const getRandomPosition = () => {
 
 const Kleshas: React.FC<Props> = (props) => {
   if (typeof document === 'undefined') return <></>
+
   const [left, setLeft] = useState(0)
   const [top, setTop] = useState(0)
   useEffect(() => {
@@ -33,8 +36,35 @@ const Kleshas: React.FC<Props> = (props) => {
   }, [])
   const kleshas = utils.kleshasData.find((item) => item.id === props.kleshasId)
   if (!kleshas || !left || !top) return <></>
+
+  const onClick = () => {
+    const thisDom = document.getElementById('kleshas' + props.kleshasKey)
+    thisDom?.classList.add('eradicating')
+    thisDom?.animate(
+      [
+        {
+          opacity: thisDom?.style.opacity,
+          transform: 'scale(0.8)',
+          filter: `blur(0)`,
+        },
+        {
+          opacity: 0,
+          transform: 'scale(1.5)',
+          filter: `blur(10px)`,
+        },
+      ],
+      {
+        fill: 'forwards',
+        duration: animationMs,
+      }
+    )
+    setTimeout(() => {
+      props.onClick()
+    }, animationMs)
+  }
+
   return (
-    <div className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={props.onClick}>
+    <div id={'kleshas' + props.kleshasKey} className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={() => onClick()}>
       <span className="kleshas-text">{kleshas.name}</span>
     </div>
   )

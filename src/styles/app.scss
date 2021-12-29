@@ -70,6 +70,10 @@ h1.logo {
     font-weight: bold;
     vertical-align: super;
   }
+
+  &.eradicating {
+    pointer-events: none;
+  }
 }
 
 .button {
