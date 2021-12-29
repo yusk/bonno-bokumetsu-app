@@ -17,17 +17,21 @@ const ResultPage: React.FC<Props> = (props) => {
       router.push({ pathname: '/' })
     }
   }, [])
+
+  const pageUrl = `https://bonno-bokumetsu-app.volare.site/${router.query.kleshas}`
+
   if (!user.kleshasLogs.length) {
-    return <>
-      <Head>
-        <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/名誉欲撲滅.png" />
-      </Head>
-    </>
+    return (
+      <>
+        <Head>
+          <meta property="og:image" content={`${pageUrl}.png`} />
+        </Head>
+      </>
+    )
   }
 
-  const eradicatedKleshasRanking = _.map(_.countBy(user.kleshasLogs), (kleshasCount, kleshasId) => ({id: kleshasId, count: kleshasCount})).sort((a, b) => b.count - a.count)
+  const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
   const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
-  console.log('eradicatedKleshasRanking', eradicatedKleshasRanking)
   return (
     <>
       <div className="result">
@@ -44,7 +48,7 @@ const ResultPage: React.FC<Props> = (props) => {
               return (
                 <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
                   {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
-                  {kleshas?.name} {kleshasItem.count}個 {(3 <= index && index !== eradicatedKleshasRanking.length - 1) ? '/' : ''}
+                  {kleshas?.name} {kleshasItem.count}個 {3 <= index && index !== eradicatedKleshasRanking.length - 1 ? '/' : ''}
                 </li>
               )
             })}
@@ -52,7 +56,16 @@ const ResultPage: React.FC<Props> = (props) => {
         </div>
 
         <span className="button twitter-button">
-          <a href="https://twitter.com/intent/tweet?text=aaaaa&url=image_url" target="blank">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${(
+              <span>
+                test
+                <br />
+                test
+              </span>
+            )}&url=${pageUrl}`}
+            target="blank"
+          >
             <i className="fab fa-twitter" />
             Twitterに投稿する
           </a>

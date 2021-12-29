@@ -7,7 +7,8 @@ class MyDocument extends Document {
   }
 
   render() {
-    const description = '煩悩を消し去って新年を迎えよう！'
+    const description =
+      'ランダムに表示される様々な煩悩をタップして、気の向くままに煩悩を撲滅するゲームです。年の瀬に今年一年の煩悩を撲滅して、清き心で新年を迎えよう！'
 
     return (
       <Html lang="ja-JP" dir="ltr">
@@ -43,9 +44,8 @@ class MyDocument extends Document {
           {/* ogp */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:url" content="https://bonno-bokumetsu-app.volare.site/" />
-          <meta property="og:title" content="煩悩撲滅アプリ" />
+          <meta property="og:title" content="欲を除いて清き新年を迎えよう - 煩悩撲滅アプリ" />
           <meta property="og:description" content={description} />
-          <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
         </Head>
         <body>
           <Main />

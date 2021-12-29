@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Head from 'next/head'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
@@ -33,24 +34,32 @@ const BokumetsuPage: React.FC<Props> = (props) => {
     setKleshasList(kleshasList)
 
     if (lastKleshasCount === 1) {
-      router.push({ pathname: '/result' })
+      user.kleshasLogs.push(kleshasId)
+      const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
+      const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
+      router.push({ pathname: `/result/${kleshas1?.name}撲滅` })
     }
   }
   return (
-    <div className="joya">
-      <img className="bell" src={TempleImage} />
-      <div className="kleshas-count">
-        <span>あと</span>
-        <br />
-        <span className="number">{lastKleshasCount}</span>
-        <span>回</span>
+    <>
+      <Head>
+        <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
+      </Head>
+      <div className="joya">
+        <img className="bell" src={TempleImage} />
+        <div className="kleshas-count">
+          <span>あと</span>
+          <br />
+          <span className="number">{lastKleshasCount}</span>
+          <span>回</span>
+        </div>
+        <div id="kleshasField">
+          {kleshasList.map((kleshasId, index) => {
+            return <Kleshas key={index * (utils.allKleshasCount + 10) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
+          })}
+        </div>
       </div>
-      <div id="kleshasField">
-        {kleshasList.map((kleshasId, index) => {
-          return <Kleshas key={index * (utils.allKleshasCount + 10) + kleshasId} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
-        })}
-      </div>
-    </div>
+    </>
   )
 }
 

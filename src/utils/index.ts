@@ -31,8 +31,13 @@ const startAdjustOnResize = () => {
   })
 }
 
+const makeEradicatedKleshasRanking = (kleshasLogs: number[]) => {
+  return _.map(_.countBy(kleshasLogs), (kleshasCount, kleshasId) => ({ id: kleshasId, count: kleshasCount })).sort((a, b) => b.count - a.count)
+}
+
 export default {
   kleshasData,
   startAdjustOnResize,
   allKleshasCount,
+  makeEradicatedKleshasRanking,
 }
