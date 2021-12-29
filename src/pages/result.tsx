@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import _ from 'lodash'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import { RootState, DispatchProps } from '~/redux/types'
@@ -9,7 +9,16 @@ import utils from '~/utils'
 type Props = WithRouterProps & RootState & DispatchProps
 
 const ResultPage: React.FC<Props> = (props) => {
-  const { user } = props
+  const { user, router } = props
+
+  useEffect(() => {
+    if (!user.kleshasLogs.length) {
+      router.push({ pathname: '/' })
+    }
+  }, [])
+  if (!user.kleshasLogs.length) {
+    return <></>
+  }
 
   const eradicatedKleshasRanking = _.map(_.countBy(user.kleshasLogs), (kleshasCount, kleshasId) => ({id: kleshasId, count: kleshasCount})).sort((a, b) => b.count - a.count)
   const kleshas1 = utils.kleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
