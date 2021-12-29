@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BubbleImage from '~/assets/img/bubble.svg'
 import utils from '~/utils'
 
@@ -12,6 +12,7 @@ type Props = {
 
 const getRandomPosition = () => {
   const kleshasField = document.getElementById('kleshasField')
+  console.log('kleshasField', kleshasField)
   const leftMax = kleshasField?.offsetWidth
   const topMax = kleshasField?.offsetHeight
   if (!leftMax || !topMax) return {}
@@ -25,8 +26,15 @@ const Kleshas: React.FC<Props> = (props) => {
   const position = getRandomPosition()
   const [left, setLeft] = useState(position.left)
   const [top, setTop] = useState(position.top)
+  useEffect(() => {
+    const position = getRandomPosition()
+    if (!left || !top) {
+      setLeft(position.left)
+      setTop(position.top)
+    }
+  }, [])
   const kleshas = utils.kleshasData.find(item => item.id === props.kleshasId)
-  if (!kleshas) return <></>
+  if (!kleshas || !left || !top) return <></>
   return <div className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={props.onClick}><span className="kleshas-text">{kleshas.name}</span></div>
 }
 
