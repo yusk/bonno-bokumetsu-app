@@ -24,7 +24,6 @@ const BokumetsuPage: React.FC<Props> = (props) => {
   const eradicatedKleshasCount = user.kleshasLogs.length
   const lastKleshasCount = MaxKleshasCount - eradicatedKleshasCount
   const eradicateKleshas = (index: number, kleshasId: number) => {
-    actions.addKleshasLog(kleshasId)
     while (kleshasList[index] === kleshasId) {
       kleshasList[index] = getRandomKleshasId()
     }
@@ -57,7 +56,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         <div id="kleshasField">
           {kleshasList.map((kleshasId, index) => {
             const key = index * 50000 + kleshasId
-            return <Kleshas key={key} kleshasKey={key} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
+            return <Kleshas key={key} actions={actions} kleshasKey={key} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
           })}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import BubbleImage from '~/assets/img/bubble.svg'
+import { DispatchProps } from '~/redux/types'
 import utils from '~/utils'
 
 const animationMs = 200
@@ -10,7 +11,7 @@ type Props = {
   kleshasId: number
   kleshasKey: number
   onClick: () => void
-}
+} & DispatchProps
 
 const getRandomPosition = () => {
   const kleshasField = document.getElementById('kleshasField')
@@ -24,7 +25,7 @@ const getRandomPosition = () => {
 
 const Kleshas: React.FC<Props> = (props) => {
   if (typeof document === 'undefined') return <></>
-
+  const { actions, kleshasId, kleshasKey } = props
   const [left, setLeft] = useState(0)
   const [top, setTop] = useState(0)
   useEffect(() => {
@@ -34,11 +35,12 @@ const Kleshas: React.FC<Props> = (props) => {
       setTop(position.top || 0)
     }
   }, [])
-  const kleshas = utils.kleshasData.find((item) => item.id === props.kleshasId)
+  const kleshas = utils.kleshasData.find((item) => item.id === kleshasId)
   if (!kleshas || !left || !top) return <></>
 
   const onClick = () => {
-    const thisDom = document.getElementById('kleshas' + props.kleshasKey)
+    actions.addKleshasLog(kleshasId)
+    const thisDom = document.getElementById('kleshas' + kleshasKey)
     thisDom?.classList.add('eradicating')
     thisDom?.animate(
       [
@@ -64,7 +66,7 @@ const Kleshas: React.FC<Props> = (props) => {
   }
 
   return (
-    <div id={'kleshas' + props.kleshasKey} className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={() => onClick()}>
+    <div id={'kleshas' + kleshasKey} className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={() => onClick()}>
       <span className="kleshas-text">{kleshas.name}</span>
     </div>
   )
