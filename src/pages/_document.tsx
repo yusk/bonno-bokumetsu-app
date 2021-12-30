@@ -39,7 +39,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000" />
           <meta name="description" content={description} />
           <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.svg" />
           <link rel="manifest" href="/manifest.json" />
           {/* ogp */}
           <meta name="twitter:card" content="summary_large_image" />
