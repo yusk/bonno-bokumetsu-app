@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
-import { useRouter } from 'next/router'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -45,6 +44,7 @@ class MyDocument extends Document {
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:url" content="https://bonno-bokumetsu-app.volare.site/" />
           <meta property="og:title" content="欲を除いて清き新年を迎えよう - 煩悩撲滅アプリ" />
+          
           <meta property="og:description" content={description} />
         </Head>
         <body>
