@@ -46,6 +46,7 @@ class MyDocument extends Document {
           <meta property="og:url" content="https://bonno-bokumetsu-app.volare.site/" />
           <meta property="og:title" content="欲を除いて清き新年を迎えよう - 煩悩撲滅アプリ" />
           <meta property="og:description" content={description} />
+          <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
         </Head>
         <body>
           <Main />
