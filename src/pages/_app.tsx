@@ -40,9 +40,6 @@ class MyApp extends App<Props, {}, State> {
       <ReactReduxContext.Consumer>
         {({ store }) => (
           <Provider store={store}>
-            <Head>
-              <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
-            </Head>
             <Layout>
               <Component {...pageProps} />
             </Layout>
