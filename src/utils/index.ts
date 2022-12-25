@@ -1,5 +1,6 @@
 import _ from 'lodash'
 
+const MaxDisplayKleshasCount = 8
 const MaxKleshasCount = 108
 
 const KleshasData = [
@@ -37,10 +38,14 @@ const makeEradicatedKleshasRanking = (kleshasLogs: number[]) => {
   return _.map(_.countBy(kleshasLogs), (kleshasCount, kleshasId) => ({ id: kleshasId, count: kleshasCount })).sort((a, b) => b.count - a.count)
 }
 
+const wait = async (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
 export default {
+  MaxDisplayKleshasCount,
   MaxKleshasCount,
   KleshasData,
   KleshasTypeCount,
   startAdjustOnResize,
   makeEradicatedKleshasRanking,
+  wait,
 }

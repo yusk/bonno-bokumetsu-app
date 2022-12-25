@@ -10,6 +10,7 @@ const kleshasHeight = 108
 type Props = {
   kleshasId: number
   kleshasKey: number
+  clearTimer: () => void
   onClick: () => void
 } & DispatchProps
 
@@ -39,6 +40,8 @@ const Kleshas: React.FC<Props> = (props) => {
   if (!kleshas || !left || !top) return <></>
 
   const onClick = () => {
+    props.clearTimer()
+
     actions.addKleshasLog(kleshasId)
     const thisDom = document.getElementById('kleshas' + kleshasKey)
     thisDom?.classList.add('eradicating')

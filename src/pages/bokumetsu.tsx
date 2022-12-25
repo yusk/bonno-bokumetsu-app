@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Head from 'next/head'
 import { WithRouterProps } from 'next/dist/client/with-router'
 import useSound from 'use-sound'
@@ -17,11 +17,9 @@ const getRandomKleshasId = () => {
 }
 
 const BokumetsuPage: React.FC<Props> = (props) => {
-  const [kleshasList, setKleshasList] = useState(
-    Array(5)
-      .fill(0)
-      .map((id) => getRandomKleshasId())
-  )
+  const [kleshasList, setKleshasList] = useState(Array(utils.MaxDisplayKleshasCount).fill(-1))
+  const kleshasListRef = useRef(Array(utils.MaxDisplayKleshasCount).fill(-1))
+  const kleshasTimerIdListRef = useRef(Array(utils.MaxDisplayKleshasCount).fill(-1))
   const { actions, user, router } = props
 
   const [playBokumetuSound, bokumetuSound] = useSound(`data:audio/mp3;base64,${BokumetuSound}`, {
@@ -34,21 +32,49 @@ const BokumetsuPage: React.FC<Props> = (props) => {
     volume: 0.1,
   })
 
+  const clearTimer = (index: number) => {
+    if (kleshasTimerIdListRef.current[index]) {
+      clearTimeout(kleshasTimerIdListRef.current[index])
+      kleshasTimerIdListRef.current[index] = null
+    }
+  }
+
+  const refreshKleshas = (index: number, kleshasId: number) => {
+    if (kleshasTimerIdListRef.current[index]) {
+      clearTimeout(kleshasTimerIdListRef.current[index])
+    }
+
+    while (kleshasListRef.current[index] === kleshasId) {
+      kleshasListRef.current[index] = getRandomKleshasId()
+    }
+
+    const kleshasTimerId = setTimeout(() => {
+      refreshKleshas(index, kleshasListRef.current[index])
+    }, 4000)
+
+    kleshasTimerIdListRef.current[index] = kleshasTimerId
+
+    setKleshasList(kleshasListRef.current.concat())
+  }
+
   const eradicatedKleshasCount = user.kleshasLogs.length
   const lastKleshasCount = utils.MaxKleshasCount - eradicatedKleshasCount
+
   const eradicateKleshas = (index: number, kleshasId: number) => {
     if (!user.isMute) {
       playBellSound()
     }
-    while (kleshasList[index] === kleshasId) {
-      kleshasList[index] = getRandomKleshasId()
-    }
     if (kleshasList.length >= lastKleshasCount) {
-      kleshasList[index] = -1
+      clearTimeout(kleshasTimerIdListRef.current[index])
+      kleshasListRef.current[index] = -1
+      setKleshasList(kleshasListRef.current.concat())
+    } else {
+      refreshKleshas(index, kleshasId)
     }
-    setKleshasList(kleshasList.concat())
 
     if (lastKleshasCount === 1) {
+      kleshasListRef.current = Array(utils.MaxDisplayKleshasCount).fill(-1)
+      setKleshasList(kleshasListRef.current.concat())
       user.kleshasLogs.push(kleshasId)
       const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
       const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
@@ -58,6 +84,16 @@ const BokumetsuPage: React.FC<Props> = (props) => {
       }
     }
   }
+
+  useEffect(() => {
+    const initialize = async () => {
+      for (let index = 0; index < utils.MaxDisplayKleshasCount; index += 1) {
+        refreshKleshas(index, kleshasList[index])
+        await utils.wait(400)
+      }
+    }
+    initialize()
+  }, [])
 
   return (
     <>
@@ -76,7 +112,16 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         <div id="kleshasField">
           {kleshasList.map((kleshasId, index) => {
             const key = index * 50000 + kleshasId
-            return <Kleshas key={key} actions={actions} kleshasKey={key} kleshasId={kleshasId} onClick={() => eradicateKleshas(index, kleshasId)} />
+            return (
+              <Kleshas
+                key={key}
+                actions={actions}
+                kleshasKey={key}
+                kleshasId={kleshasId}
+                clearTimer={() => clearTimer(index)}
+                onClick={() => eradicateKleshas(index, kleshasId)}
+              />
+            )
           })}
         </div>
       </div>

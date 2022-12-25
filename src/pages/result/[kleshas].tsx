@@ -43,10 +43,18 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
   const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
-  const kleshas2 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id))
-  const kleshas3 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id))
+  const kleshas2 = eradicatedKleshasRanking[1] ? utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id)) : undefined
+  const kleshas3 = eradicatedKleshasRanking[2] ? utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id)) : undefined
 
-  const tweetMessage = `2021年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a🔔撲滅した欲ランキング🔔%0a%20%20%20-%201位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a%20%20%20-%202位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a%20%20%20-%203位%20${kleshas3?.name}%20${eradicatedKleshasRanking[2]?.count}個%0a%23除夜の鐘%20%23煩悩%20%23煩悩撲滅アプリ`
+  let tweetMessage = `2022年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a🔔撲滅した欲ランキング🔔%0a%20%20%20-%201位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a`
+  if (kleshas2) {
+    tweetMessage += `%20%20%20-%202位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a`
+  }
+  if (kleshas3) {
+    tweetMessage += `%20%20%20-%203位%20${kleshas3?.name}%20${eradicatedKleshasRanking[2]?.count}個%0a`
+  }
+
+  tweetMessage += `%23除夜の鐘%20%23煩悩%20%23煩悩撲滅アプリ`
 
   return (
     <>

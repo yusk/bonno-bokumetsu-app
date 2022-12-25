@@ -67,6 +67,8 @@ h1.logo {
   line-height: 112px;
   width: 145px;
   height: 112px;
+  animation: fadeout-anim 4s linear forwards;
+
   .kleshas-text {
     font-size: 1.3rem;
     font-weight: bold;
@@ -76,6 +78,12 @@ h1.logo {
   &.eradicating {
     pointer-events: none;
   }
+}
+
+@keyframes fadeout-anim {
+	100% {
+		opacity: 0;
+	}
 }
 
 .sound-button {
