@@ -35,7 +35,13 @@
     },
     "rules": {
         "prettier/prettier": "error",
-        "import/extensions": ["error", "never"],
+        "import/extensions": ["error", "never", 
+          {
+            "svg": "ignorePackages",
+            "png": "ignorePackages",
+            "mp3": "ignorePackages"
+          }
+        ],
         "react/jsx-filename-extension": [0],
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],

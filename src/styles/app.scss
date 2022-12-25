@@ -78,6 +78,21 @@ h1.logo {
   }
 }
 
+.sound-button {
+  z-index: 200;
+  position: relative;
+  float: right;
+  background: none;
+  border: none;
+  margin-right: 2rem;
+  margin-top: -4rem;
+  font-size: 2rem;
+  
+  i {
+    color: #FFF;
+  }
+}
+
 .button {
   display: block;
   text-align: center;

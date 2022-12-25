@@ -2,6 +2,7 @@ import utils from '~/utils'
 import { UserState, UserActions } from '../types'
 
 const initialState: UserState = {
+  isMute: false,
   kleshasLogs: [],
 }
 
@@ -20,6 +21,11 @@ const User = (state = initialState, action: UserActions): UserState => {
       return {
         ...state,
         kleshasLogs: [],
+      }
+    case 'SET_IS_MUTE':
+      return {
+        ...state,
+        isMute: action.payload.isMute,
       }
     default:
       return state

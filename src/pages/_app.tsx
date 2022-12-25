@@ -40,6 +40,9 @@ class MyApp extends App<Props, {}, State> {
       <ReactReduxContext.Consumer>
         {({ store }) => (
           <Provider store={store}>
+            <Head>
+              <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"></link>
+            </Head>
             <Layout>
               <Component {...pageProps} />
             </Layout>

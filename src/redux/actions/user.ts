@@ -14,3 +14,12 @@ export const clearKleshasLog = () => async (dispatch: Dispatch) => {
     type: 'CLEAR_KLESHAS_LOG',
   })
 }
+
+export const setIsMute = (isMute: boolean) => async (dispatch: Dispatch) => {
+  dispatch({
+    type: 'SET_IS_MUTE',
+    payload: {
+      isMute,
+    },
+  })
+}

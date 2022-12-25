@@ -13,13 +13,24 @@ export type ClearKleshasLogAction = {
   type: 'CLEAR_KLESHAS_LOG'
 }
 
+export type SetIsMutePayload = {
+  isMute: boolean
+}
+
+export type SetIsMuteAction = {
+  type: 'SET_IS_MUTE'
+  payload: SetIsMutePayload
+}
+
 export type UserDispatchProps = {
   addKleshasLog: typeof user.addKleshasLog
   clearKleshasLog: typeof user.clearKleshasLog
+  setIsMute: typeof user.setIsMute
 }
 
-export type UserActions = AddKleshasLogAction | ClearKleshasLogAction
+export type UserActions = AddKleshasLogAction | ClearKleshasLogAction | SetIsMuteAction
 
 export type UserState = {
+  isMute: boolean
   kleshasLogs: number[]
 }

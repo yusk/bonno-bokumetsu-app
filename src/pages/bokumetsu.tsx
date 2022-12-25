@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { WithRouterProps } from 'next/dist/client/with-router'
+import useSound from 'use-sound'
 import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
 import Kleshas from '@/widgets/Kleshas'
 import TempleImage from '~/assets/img/temple.png'
 import utils from '~/utils'
+import BellSound from '~/assets/sound/bell'
+import BokumetuSound from '~/assets/sound/bokumetu'
+
 type Props = WithRouterProps & RootState & DispatchProps
 
 const getRandomKleshasId = () => {
@@ -19,9 +23,23 @@ const BokumetsuPage: React.FC<Props> = (props) => {
       .map((id) => getRandomKleshasId())
   )
   const { actions, user, router } = props
+
+  const [playBokumetuSound, bokumetuSound] = useSound(`data:audio/mp3;base64,${BokumetuSound}`, {
+    autoplay: !user.isMute,
+    loop: true,
+    volume: 0.05,
+  })
+
+  const [playBellSound] = useSound(`data:audio/mp3;base64,${BellSound}`, {
+    volume: 0.1,
+  })
+
   const eradicatedKleshasCount = user.kleshasLogs.length
   const lastKleshasCount = utils.MaxKleshasCount - eradicatedKleshasCount
   const eradicateKleshas = (index: number, kleshasId: number) => {
+    if (!user.isMute) {
+      playBellSound()
+    }
     while (kleshasList[index] === kleshasId) {
       kleshasList[index] = getRandomKleshasId()
     }
@@ -35,6 +53,9 @@ const BokumetsuPage: React.FC<Props> = (props) => {
       const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
       const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
       router.push({ pathname: `/result/${kleshas1?.id}` })
+      if (!user.isMute) {
+        bokumetuSound.stop()
+      }
     }
   }
 

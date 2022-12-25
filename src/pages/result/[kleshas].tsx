@@ -1,16 +1,25 @@
+import Link from 'next/link'
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import _ from 'lodash'
 import { WithRouterProps } from 'next/dist/client/with-router'
+import useSound from 'use-sound'
 import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
-import Link from 'next/link'
+import ResultSound from '~/assets/sound/result'
+
 import utils from '~/utils'
 
 type Props = WithRouterProps & RootState & DispatchProps
 
 const ResultPage: React.FC<Props> = (props) => {
   const { user, router } = props
+
+  const [playResultSound, resultSound] = useSound(`data:audio/mp3;base64,${ResultSound}`, {
+    volume: 0.2,
+    autoplay: !user.isMute,
+    loop: true,
+  })
 
   useEffect(() => {
     if (!user.kleshasLogs.length) {
@@ -72,7 +81,7 @@ const ResultPage: React.FC<Props> = (props) => {
             Twitterに投稿する
           </a>
         </span>
-        <span className="button retry-button">
+        <span className="button retry-button" onClick={() => resultSound.stop()}>
           <Link href="/">もう一度</Link>
         </span>
       </div>

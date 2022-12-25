@@ -1,6 +1,9 @@
+/* eslint-disable */
+
 const withCSS = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
 const withPWA = require('next-pwa')
+
 module.exports = withPWA(withCSS(withSass({
   webpack(config, options) {
     config.resolve.alias['~'] = __dirname + '/src'
