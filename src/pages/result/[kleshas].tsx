@@ -17,14 +17,13 @@ const ResultPage: React.FC<Props> = (props) => {
 
   const [playResultSound, resultSound] = useSound(`data:audio/mp3;base64,${ResultSound}`, {
     volume: 0.2,
-    autoplay: !user.isMute,
+    autoplay: !user.isMute && user.kleshasLogs.length,
     loop: true,
   })
 
   useEffect(() => {
     if (!user.kleshasLogs.length) {
       router.push({ pathname: '/' })
-      resultSound.stop()
     }
   }, [])
 
