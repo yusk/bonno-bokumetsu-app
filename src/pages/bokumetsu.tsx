@@ -102,7 +102,7 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
       </Head>
       <div className="joya">
-        <img className="bell" src={TempleImage} />
+        <img className="bell" alt="鐘" src={TempleImage} />
         <div className="kleshas-count">
           <span>あと</span>
           <br />

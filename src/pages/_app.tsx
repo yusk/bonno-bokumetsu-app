@@ -14,10 +14,6 @@ type Props = RootState & DispatchProps
 type State = {}
 
 class MyApp extends App<Props, {}, State> {
-  constructor(props: any) {
-    super(props)
-  }
-
   static async getInitialProps({ Component, ctx }: AppContext) {
     let pageProps = {}
 
@@ -32,8 +28,6 @@ class MyApp extends App<Props, {}, State> {
     utils.startAdjustOnResize()
   }
 
-  async componentDidUpdate() {}
-
   render() {
     const { Component, pageProps } = this.props
     return (
@@ -41,7 +35,7 @@ class MyApp extends App<Props, {}, State> {
         {({ store }) => (
           <Provider store={store}>
             <Head>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"></link>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
             </Head>
             <Layout>
               <Component {...pageProps} />

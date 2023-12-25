@@ -15,7 +15,7 @@
     "next": "^10.0.5",
     "next-pwa": "^5.0.5",
     "next-redux-wrapper": "^6.0.2",
-    "node-sass": "^5.0.0",
+    "node-sass": "^8.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-datetime": "^3.0.4",
@@ -32,7 +32,7 @@
     "use-sound": "^4.0.1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_OPTIONS='--openssl-legacy-provider' next",
     "build": "next build",
     "start": "next start",
     "check-types": "tsc --noEmit",
