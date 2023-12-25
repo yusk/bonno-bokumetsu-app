@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import Head from 'next/head'
 import App, { AppContext } from 'next/app'
@@ -35,7 +36,7 @@ class MyApp extends App<Props, {}, State> {
         {({ store }) => (
           <Provider store={store}>
             <Head>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+              <title>煩悩撲滅アプリ</title>
             </Head>
             <Layout>
               <Component {...pageProps} />

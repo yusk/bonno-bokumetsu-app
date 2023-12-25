@@ -6,6 +6,7 @@ import { RootState, DispatchProps } from '~/redux/types'
 import enhancer from '~/redux/enhancer'
 import Kleshas from '@/widgets/Kleshas'
 import TempleImage from '~/assets/img/temple.png'
+import KaneImage from '~/assets/img/kane.png'
 import utils from '~/utils'
 import BellSound from '~/assets/sound/bell'
 import BokumetuSound from '~/assets/sound/bokumetu'
@@ -85,6 +86,18 @@ const BokumetsuPage: React.FC<Props> = (props) => {
     }
   }
 
+  const eradicateKleshasRenda = () => {
+    const kleshasElements = document.getElementsByClassName('kleshas')
+    const kleshasElement = kleshasElements[Math.floor(Math.random() * kleshasElements.length)] as HTMLElement
+    if (kleshasElement) {
+      kleshasElement.click()
+      return
+    }
+    if (!user.isMute) {
+      playBellSound()
+    }
+  }
+
   useEffect(() => {
     const initialize = async () => {
       for (let index = 0; index < utils.MaxDisplayKleshasCount; index += 1) {
@@ -103,14 +116,14 @@ const BokumetsuPage: React.FC<Props> = (props) => {
         <meta property="og:image" content="https://bonno-bokumetsu-app.volare.site/ogp.jpg" />
       </Head>
       <div className="joya">
-        <img className="bell" alt="鐘" src={TempleImage} />
+        <img className="bell" alt="寺" src={TempleImage} />
         <div className="kleshas-count">
           <span>あと</span>
           <br />
           <span className="number">{lastKleshasCount}</span>
           <span>回</span>
         </div>
-        <div id="kleshasField">
+        <div id="kleshasField" className="narrow-field">
           {kleshasList.map((kleshasId, index) => {
             const key = index * 50000 + kleshasId
             return (
@@ -124,6 +137,11 @@ const BokumetsuPage: React.FC<Props> = (props) => {
               />
             )
           })}
+        </div>
+        <div className="kleshas-footer">
+          <span role="button" tabIndex={0} className="kane-button" onClick={() => eradicateKleshasRenda()} onKeyDown={() => eradicateKleshasRenda()}>
+            <img className="kane" alt="鐘" src={KaneImage} />
+          </span>
         </div>
       </div>
     </>

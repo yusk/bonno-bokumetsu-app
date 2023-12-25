@@ -20,7 +20,7 @@ const getRandomPosition = () => {
   const topMax = kleshasField?.offsetHeight
   if (!leftMax || !topMax) return {}
   const left = Math.floor(Math.random() * (leftMax - 20 - kleshasWidth)) + 10
-  const top = Math.floor(Math.random() * (topMax - 20 - kleshasHeight - 100)) + 10
+  const top = Math.floor(Math.random() * (topMax - 20 - kleshasHeight)) + 10
   return { left, top }
 }
 
@@ -39,11 +39,12 @@ const Kleshas: React.FC<Props> = (props) => {
   const kleshas = utils.KleshasData.find((item) => item.id === kleshasId)
   if (!kleshas || !left || !top) return <></>
 
-  const onClick = () => {
-    props.clearTimer()
+  const onClickKleshas = () => {
+    const { clearTimer, onClick } = props
+    clearTimer()
 
     actions.addKleshasLog(kleshasId)
-    const thisDom = document.getElementById('kleshas' + kleshasKey)
+    const thisDom = document.getElementById(`kleshas${kleshasKey}`)
     thisDom?.classList.add('eradicating')
     thisDom?.animate(
       [
@@ -64,12 +65,20 @@ const Kleshas: React.FC<Props> = (props) => {
       }
     )
     setTimeout(() => {
-      props.onClick()
+      onClick()
     }, animationMs)
   }
 
   return (
-    <div id={'kleshas' + kleshasKey} className="kleshas" style={{ backgroundImage: `url(${BubbleImage})`, left, top }} onClick={() => onClick()}>
+    <div
+      role="button"
+      tabIndex={kleshasKey}
+      id={`kleshas${kleshasKey}`}
+      className="kleshas"
+      style={{ backgroundImage: `url(${BubbleImage})`, left, top }}
+      onClick={() => onClickKleshas()}
+      onKeyDown={() => onClickKleshas()}
+    >
       <span className="kleshas-text">{kleshas.name}</span>
     </div>
   )

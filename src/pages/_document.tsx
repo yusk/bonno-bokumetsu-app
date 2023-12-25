@@ -12,7 +12,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ja-JP" dir="ltr">
         <Head>
-          <title>煩悩撲滅アプリ</title>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
           <link
             rel="stylesheet"
             href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"

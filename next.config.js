@@ -5,7 +5,7 @@ const withSass = require('@zeit/next-sass')
 const withPWA = require('next-pwa')
 
 module.exports = withPWA(withCSS(withSass({
-  webpack(config, options) {
+  webpack(config) {
     config.resolve.alias['~'] = __dirname + '/src'
     config.resolve.alias['@'] = __dirname + '/src/components'
     config.module.rules.push({
@@ -19,6 +19,11 @@ module.exports = withPWA(withCSS(withSass({
         }
       }
     })
+    config.watchOptions = {
+      aggregateTimeout: 200,
+      poll: 1000,
+      ignored: [ '**/node_modules/**', '**/.git/**', '**/.next/**' ]
+    }
     return config
   },
   publicRuntimeConfig: {
@@ -29,5 +34,5 @@ module.exports = withPWA(withCSS(withSass({
   pwa: {
     disable: process.env.NODE_ENV === 'development',
     dest: 'public'
-  }
+  },
 })))

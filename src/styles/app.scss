@@ -8,7 +8,7 @@ h1.logo {
   height: 200px;
   z-index: 100;
   position: relative;
-  margin-bottom: calc(90vh - 400px);
+  margin-bottom: calc(90vh - 440px);
   @include bp-down() {
     background-size: 14rem;
     height: 140px;
@@ -43,6 +43,19 @@ h1.logo {
   @include bp-down() {
     max-width: 100%;
   }
+}
+
+.new {
+  color: rgba(0,0,0,0);
+  position: absolute;
+  top: -20px;
+  right: 0;
+  background-position : center;
+  background-repeat : no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  height: inherit;
+  max-width: 75px;
 }
 
 .result {
@@ -133,6 +146,8 @@ h1.logo {
 }
 
 .start-button {
+  position: relative;
+  margin-bottom: 32px;
   :link, :visited {
     color: #FFF;
     background-color: #E6AD28;
@@ -169,7 +184,31 @@ h1.logo {
 
 #kleshasField {
   position: relative;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 190px);
+
+  &.narrow-field {
+    height: calc(100vh - 300px);
+  }
+}
+
+.kleshas-footer {
+  text-align: center;
+  .kane-button {
+    margin-left: 0;
+    margin-right: 0;
+    .kane {
+      color: rgba(0,0,0,0);
+      font-size: 1rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 200px;
+      z-index: 100;
+      position: relative;
+      @include bp-down() {
+        height: 140px;
+      }
+    }
+  }
 }
 
 .kleshas-result {

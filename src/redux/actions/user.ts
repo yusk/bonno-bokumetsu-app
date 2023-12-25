@@ -23,3 +23,12 @@ export const setIsMute = (isMute: boolean) => async (dispatch: Dispatch) => {
     },
   })
 }
+
+export const setGameMode = (gameMode: string) => async (dispatch: Dispatch) => {
+  dispatch({
+    type: 'SET_GAME_MODE',
+    payload: {
+      gameMode,
+    },
+  })
+}

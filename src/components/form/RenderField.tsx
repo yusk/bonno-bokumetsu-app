@@ -1,3 +1,6 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-nested-ternary */
 import React from 'react'
 
 export const RenderField: React.FC<any> = (props) => {
@@ -11,6 +14,7 @@ export const RenderField: React.FC<any> = (props) => {
     label,
     rows,
     meta: { touched, error },
+    children,
   } = props
   return (
     <div className="inline">
@@ -18,7 +22,7 @@ export const RenderField: React.FC<any> = (props) => {
         <textarea className={className} {...input} type={type} disabled={disabled} placeholder={placeholder} rows={rows} />
       ) : type === 'select' ? (
         <select className={className} {...input} type={type} disabled={disabled}>
-          {props.children}
+          {children}
         </select>
       ) : type === 'checkbox' ? (
         <label htmlFor={id}>

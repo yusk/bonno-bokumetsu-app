@@ -1,5 +1,6 @@
-import { urls } from './config'
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios'
+import urls from './config'
 
 export const Instance = axios.create({
   baseURL: urls.api.https,

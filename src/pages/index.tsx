@@ -8,6 +8,7 @@ import enhancer from '~/redux/enhancer'
 
 import LogoImage from '~/assets/img/logo.svg'
 import TempleImage from '~/assets/img/temple.png'
+import NewImage from '~/assets/img/new_sticker.png'
 import BellSound from '~/assets/sound/bell'
 import StartSound from '~/assets/sound/start'
 
@@ -36,11 +37,12 @@ const StartPage: React.FC<Props> = (props) => {
     }
   }, [user.isMute])
 
-  const onStart = () => {
+  const onStart = (gameMode = 'default') => {
     if (!user.isMute) {
       startSound.stop()
       playBellSound()
     }
+    actions.setGameMode(gameMode)
   }
 
   return (
@@ -64,8 +66,12 @@ const StartPage: React.FC<Props> = (props) => {
           BonnoBokumetsuApp
         </h1>
         <img className="bell" alt="鐘" src={TempleImage} />
-        <span className="button start-button" onClick={() => onStart()}>
+        <span role="button" tabIndex={0} className="button start-button" onClick={() => onStart()} onKeyDown={() => onStart()}>
           <Link href="/bokumetsu">開始</Link>
+        </span>
+        <span role="button" tabIndex={0} className="button start-button" onClick={() => onStart('renda')} onKeyDown={() => onStart('renda')}>
+          <img className="new" alt="NEW" src={NewImage} />
+          <Link href="/bokumetsu_renda">連打モード</Link>
         </span>
       </div>
     </>

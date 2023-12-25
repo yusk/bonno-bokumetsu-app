@@ -41,12 +41,13 @@ const ResultPage: React.FC<Props> = (props) => {
     )
   }
 
+  const gameModeText = user.gameMode === 'renda' ? '連打モード' : '撲滅モード'
   const eradicatedKleshasRanking = utils.makeEradicatedKleshasRanking(user.kleshasLogs)
   const kleshas1 = utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[0].id))
   const kleshas2 = eradicatedKleshasRanking[1] ? utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[1].id)) : undefined
   const kleshas3 = eradicatedKleshasRanking[2] ? utils.KleshasData.find((item) => item.id === Number(eradicatedKleshasRanking[2].id)) : undefined
 
-  let tweetMessage = `2022年の煩悩を撲滅しました！%0a来年は${kleshas1?.motto}年になるでしょう。%0a🔔撲滅した欲ランキング🔔%0a%20%20%20-%201位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a`
+  let tweetMessage = `2023年の煩悩を撲滅しました！(${gameModeText})%0a来年は${kleshas1?.motto}年になるでしょう。%0a🔔撲滅した欲ランキング🔔%0a%20%20%20-%201位%20${kleshas1?.name}%20${eradicatedKleshasRanking[0]?.count}個%0a`
   if (kleshas2) {
     tweetMessage += `%20%20%20-%202位%20${kleshas2?.name}%20${eradicatedKleshasRanking[1]?.count}個%0a`
   }
@@ -73,10 +74,10 @@ const ResultPage: React.FC<Props> = (props) => {
             {eradicatedKleshasRanking.map((kleshasItem, index) => {
               const kleshas = utils.KleshasData.find((item) => item.id === Number(kleshasItem.id))
               return (
-                <li key={kleshasItem.id} className={index < 3 ? 'kleshas-' + (index + 1) : 'kleshas-other'}>
+                <li key={kleshasItem.id} className={index < 3 ? `kleshas-${index + 1}` : 'kleshas-other'}>
                   {index < 3 ? <span className="kleshas-rank">{index + 1}</span> : <></>}
                   {kleshas?.name} {kleshasItem.count}
-                  <span className="count-suffix">個</span> {3 <= index && index !== eradicatedKleshasRanking.length - 1 ? '/' : ''}
+                  <span className="count-suffix">個</span> {index >= 3 && index !== eradicatedKleshasRanking.length - 1 ? '/' : ''}
                 </li>
               )
             })}
@@ -89,7 +90,7 @@ const ResultPage: React.FC<Props> = (props) => {
             Twitterに投稿する
           </a>
         </span>
-        <span className="button retry-button" onClick={() => resultSound.stop()}>
+        <span role="button" tabIndex={0} className="button retry-button" onClick={() => resultSound.stop()} onKeyDown={() => resultSound.stop()}>
           <Link href="/">もう一度</Link>
         </span>
       </div>

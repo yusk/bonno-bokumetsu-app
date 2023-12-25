@@ -8,8 +8,8 @@ const initialState: UserState = {
 
 const User = (state = initialState, action: UserActions): UserState => {
   switch (action.type) {
-    case 'ADD_KLESHAS_LOG':
-      let kleshasLogs = state.kleshasLogs
+    case 'ADD_KLESHAS_LOG': {
+      let { kleshasLogs } = state
       if (state.kleshasLogs.length < utils.MaxKleshasCount) {
         kleshasLogs = state.kleshasLogs.concat([action.payload.kleshasId])
       }
@@ -17,6 +17,7 @@ const User = (state = initialState, action: UserActions): UserState => {
         ...state,
         kleshasLogs,
       }
+    }
     case 'CLEAR_KLESHAS_LOG':
       return {
         ...state,
@@ -26,6 +27,11 @@ const User = (state = initialState, action: UserActions): UserState => {
       return {
         ...state,
         isMute: action.payload.isMute,
+      }
+    case 'SET_GAME_MODE':
+      return {
+        ...state,
+        gameMode: action.payload.gameMode,
       }
     default:
       return state

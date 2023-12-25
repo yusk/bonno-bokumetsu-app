@@ -17,20 +17,31 @@ export type SetIsMutePayload = {
   isMute: boolean
 }
 
+export type SetGameModePayload = {
+  gameMode: string
+}
+
 export type SetIsMuteAction = {
   type: 'SET_IS_MUTE'
   payload: SetIsMutePayload
+}
+
+export type SetGameModeAction = {
+  type: 'SET_GAME_MODE'
+  payload: SetGameModePayload
 }
 
 export type UserDispatchProps = {
   addKleshasLog: typeof user.addKleshasLog
   clearKleshasLog: typeof user.clearKleshasLog
   setIsMute: typeof user.setIsMute
+  setGameMode: typeof user.setGameMode
 }
 
-export type UserActions = AddKleshasLogAction | ClearKleshasLogAction | SetIsMuteAction
+export type UserActions = AddKleshasLogAction | ClearKleshasLogAction | SetIsMuteAction | SetGameModeAction
 
 export type UserState = {
   isMute: boolean
   kleshasLogs: number[]
+  gameMode?: string
 }
