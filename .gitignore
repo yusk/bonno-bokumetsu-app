@@ -52,3 +52,11 @@ out
 
 public/sw.*
 public/workbox*
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
