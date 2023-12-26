@@ -23,3 +23,9 @@ yarn dev
 ```
 yarn lint:fix
 ```
+
+## deploy
+以下動作確認後push
+```
+yarn build
+```

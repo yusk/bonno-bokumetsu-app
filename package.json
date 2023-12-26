@@ -33,8 +33,8 @@
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--openssl-legacy-provider' next",
-    "build": "next build",
-    "start": "next start",
+    "build": "NODE_OPTIONS='--openssl-legacy-provider' next build",
+    "start": "NODE_OPTIONS='--openssl-legacy-provider' next start",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src/**/*.ts",
     "eslint:fix": "eslint src/**/*.ts --fix",
