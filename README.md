@@ -27,5 +27,8 @@ yarn lint:fix
 ## deploy
 以下動作確認後push
 ```
+yarn set version 4.0.2
+sudo rm -rf ./node_modules
+yarn
 yarn build
 ```
