@@ -84,10 +84,10 @@ const ResultPage: React.FC<Props> = (props) => {
           </div>
         </div>
 
-        <span className="button twitter-button">
+        <span className="button x-twitter-button">
           <a href={`https://twitter.com/intent/tweet?text=${tweetMessage}&url=${pageUrl}/result/${router.query.kleshas}/`} target="blank">
-            <i className="fab fa-twitter" />
-            Twitterに投稿する
+            <i className="fa-brands fa-x-twitter" />
+            Twitter(現X)に投稿する
           </a>
         </span>
         <span role="button" tabIndex={0} className="button retry-button" onClick={() => resultSound.stop()} onKeyDown={() => resultSound.stop()}>
